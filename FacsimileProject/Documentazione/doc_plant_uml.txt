@@ -1,0 +1,52 @@
+@startuml
+' commento
+
+' namespace
+package GeometryLibrary <<Folder>>
+{
+
+' creare una classe:
+class Triangle
+{
+' devi listare attributi e metodi: + implica pubblico
++ Vertices : Matrix3d
+' costruttore
++ Triangle(Vertices)
++ double computeArea(
+}
+
+' matrice gigante: conviene metterla in una unica classe
+class Polygons
+{
++ Vertices : MatrixXd
++ listPolygons : vector<vector<unsigned int>>
++ v<v<v<unsigned int>>> computeTriangulation()
++ vector<double> computeArea
++ void gedimInterface(v<v<unsigned int>>&)
+.. Non member function..
+void importPolygons(path, polygons)
+..TEST POLYGONS..
+TestComputeArea
+TestTriangulation
+TestPolygons
+}
+
+package Gedim <<Frame>>
+{
+}
+
+note "Gedim is an external library" as GedimN
+GedimN .right. Gedim
+
+Gedim ..> Polygons::gedimInterface
+
+' relazione di aggregazione
+Triangle __o Polygons
+' relazione 1 a molti
+' Triangle "many" __o "1" Polygons : is made up
+
+' chiusura namespace
+} 
+
+
+@enduml
